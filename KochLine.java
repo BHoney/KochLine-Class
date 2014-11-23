@@ -91,6 +91,25 @@ public class KochLine extends Line {
 		return lineD;
 	}
 	
-	
+	/**
+	 * Checks the validity of the Koch Line
+	 * Uses Line's .isValid() method to return a boolean
+	 * @return
+	 */
+	public Boolean isKochLineValid()
+	{
+		Boolean lineA = getLineA().isValid();
+		Boolean lineB = getLineB().isValid();
+		Boolean lineC = getLineC().isValid();
+		Boolean lineD = getLineD().isValid();
+		
+		if (lineA && lineB && lineC&& lineD)
+		{
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	
 }

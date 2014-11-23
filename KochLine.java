@@ -1,3 +1,9 @@
+/**
+ * @author Robert Moore
+ * @Date 23 Novemeber 2014
+ * Class used to generate all data used to draw a KochLine for our fractal UI
+ * Version .05
+ */
 package edu.cofc.csci221.ui;
 
 public class KochLine extends Line {

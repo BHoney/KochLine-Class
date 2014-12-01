@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-
 import javax.swing.JPanel;
 
 /**
@@ -143,6 +142,12 @@ public class FractalPanel extends JPanel {
 		 * 
 		 */
 		
+		for(int l = 0; l < lines.size()-1; l++)
+		{
+			System.out.println("Added "+lines.get(l));
+			drawKochLine(g2, level, (KochLine)lines.get(l));
+		}
+		
 		
 
 	} // end paintComponent() method
@@ -163,6 +168,31 @@ public class FractalPanel extends JPanel {
 		 * Execute Algorithm provided in Assignment
 		 * 
 		 */
+		
+		if(level <= 0)
+		{
+			if (line.isValid())
+			{
+				System.out.println(line.getLineA().getStart().getX());
+				System.out.println(line.getLineA().getStart().getY());
+				//System.out.println("Drawing");
+				//g2.drawLine(line.getLineA().getStart().getX(), line.getLineA().getStart().getY(), line.getLineD().getEnd().getX(), line.getLineD().getEnd().getY());
+			}
+		}
+		else
+		{
+			//Draw the other lines and reduce the level (but how?)
+			//Recursive Loop?
+			//How do you feed in the .getLine[letter]
+					//Pass through as (KochLine)
+			
+			System.out.println("Complicated Drawing");
+			drawKochLine(g2, level-1, line.getLineA());
+			drawKochLine(g2, level-1, line.getLineB());
+			drawKochLine(g2, level-1, line.getLineC());
+			drawKochLine(g2, level-1, line.getLineD());
+			
+		}
 		
 		
 

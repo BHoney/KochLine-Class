@@ -35,7 +35,7 @@ public class KochLine extends Line {
 		{
 		//Step one: Calculate two points as reference from point 1 and 5
 			int x5i = (p5.getX() - p1.getX());
-			int y5i = (p5.getY() - p5.getY());
+			int y5i = (p5.getY() - p1.getY());
 			
 		//Now calculate each point for our next lines
 			//Calculate p2
@@ -61,9 +61,9 @@ public class KochLine extends Line {
 	 * 
 	 * @return
 	 */
-	public Line getLineA()
+	public KochLine getLineA()
 	{
-		Line lineA = new Line(p1, p2);
+		KochLine lineA = new KochLine(p1, p2);
 		return lineA;
 	}
 	
@@ -71,9 +71,9 @@ public class KochLine extends Line {
 	 * 
 	 * @return
 	 */
-	public Line getLineB()
+	public KochLine getLineB()
 	{
-		Line lineB = new Line(p2, p3);
+		KochLine lineB = new KochLine(p2, p3);
 		return lineB;
 	}
 	
@@ -81,9 +81,9 @@ public class KochLine extends Line {
 	 * 
 	 * @return
 	 */
-	public Line getLineC()
+	public KochLine getLineC()
 	{
-		Line lineC = new Line(p3, p4);
+		KochLine lineC = new KochLine(p3, p4);
 		return lineC;
 	}
 	
@@ -91,9 +91,9 @@ public class KochLine extends Line {
 	 * 
 	 * @return
 	 */
-	public Line getLineD()
+	public KochLine getLineD()
 	{
-		Line lineD = new Line(p4, p5);
+		KochLine lineD = new KochLine(p4, p5);
 		return lineD;
 	}
 	
@@ -108,14 +108,30 @@ public class KochLine extends Line {
 		Boolean lineB = getLineB().isValid();
 		Boolean lineC = getLineC().isValid();
 		Boolean lineD = getLineD().isValid();
+		Boolean valid = true;
 		
-		if (lineA && lineB && lineC&& lineD)
+		if(lineA!= true)
 		{
-			return true;
+			valid = false;
 		}
-		else{
-			return false;
+		
+		if(lineB!= true)
+		{
+			valid = false;
 		}
+		
+		if(lineC!= true)
+		{
+			valid = false;
+		}
+		
+		if(lineD!= true)
+		{
+			valid = false;
+		}
+		
+		return valid;
+		
 	}
 	
 }

@@ -20,9 +20,10 @@ public class KochLine extends Line {
 		public KochLine(Point start, Point end)
 		{
 			super(start, end); //Assigns the start and end points to our line super class
-			p1 = super.getStart(); //Add the start point and end point to p1 and 5
-			p5 = super.getEnd();
-			
+			p1 = new Point(start.getX(), start.getY());
+			p5 = new Point(end.getX(), end.getY());
+			computeFractal();
+				
 		}
 
 	//Methods
@@ -33,33 +34,40 @@ public class KochLine extends Line {
 		 */
 		public void computeFractal()
 		{
-		//Step one: Calculate two points as reference from point 1 and 5
-			int x5i = (p5.getX() - p1.getX());
-			int y5i = (p5.getY() - p1.getY());
-			
-		//Now calculate each point for our next lines
-			//Calculate p2
-			int x2 = p1.getX() + (x5i/3);
-			int y2 = p1.getY() + (y5i/3);
-			p2.setX(x2);
-			p2.setY(y2);
-			
-			//Calculate p3
-			double x3 = ((p1.getX() + p5.getX())/2)+(Math.sqrt(3)*(p1.getY()-p5.getY())/6);
-			double y3 = ((p1.getY()+p5.getY())/2) + (Math.sqrt(3)*(p5.getX()-p1.getX())/6);
-			p3.setX((int)x3); //Hopefully, passing the info through as integers works just fine
-			p3.setY((int)y3);
-			
-			//Calculate p4
-			int x4 = (p1.getX()+(2*x5i)/3);
-			int y4 = (p1.getY()+(2*y5i)/3);
-			p4.setX(x4);
-			p4.setY(y4);
+		//Set x1, y1, x5, and y5
+		int x1 = p1.getX();
+		int y1 = p1.getY();
+		
+		int x5 = p5.getX();
+		int y5 = p5.getY();
+		
+		//Generate xi and yi
+		int xi = x5 - x1;
+		int yi = y5 - y1;
+
+		//Calculate Point 2
+		int x2 = x1 + xi/3;
+		int y2 = y1 + yi/3;
+		p2 = new Point (x2, y2);
+		
+		//Calculate Point 3
+		double x3 = ((x1+x5)/2) + Math.sqrt(3.0)*(y1-y5)/6;
+		double y3 = ((y1 + y5)/2) + Math.sqrt(3.0)*(x5-x1)/6;
+
+		p3 = new Point((int)x3, (int)y3);
+		
+		//Point 4
+		int x4 =  x1 + (2*xi)/3;
+		int y4 = y1 + (2*yi)/3;
+		p4 = new Point(x4, y4);
+
+		
+		
 		}
 	
 	/**
-	 * 
-	 * @return
+	 * Generate a Line A, creating a new KochLine which will then create new points and sequences
+	 * @return KochLine
 	 */
 	public KochLine getLineA()
 	{
@@ -68,8 +76,8 @@ public class KochLine extends Line {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Generate a Line B, creating a new KochLine which will then create new points and sequences
+	 * @return KochLine
 	 */
 	public KochLine getLineB()
 	{
@@ -78,8 +86,8 @@ public class KochLine extends Line {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 *  Generate Line C, which will create new points and lines for use
+	 * @return KochLine
 	 */
 	public KochLine getLineC()
 	{
@@ -88,8 +96,8 @@ public class KochLine extends Line {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Generate Line D, which will create new points and lines for use
+	 * @return KochLine
 	 */
 	public KochLine getLineD()
 	{

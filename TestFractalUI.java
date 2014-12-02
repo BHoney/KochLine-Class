@@ -21,7 +21,7 @@ public class TestFractalUI {
 		// See output in assignment PDF
 		// --------------------------------
 
-		int level = 0;
+		int level = 5;
 		
 		FractalUI ui = new FractalUI( level );
 		

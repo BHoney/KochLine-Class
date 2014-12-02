@@ -95,7 +95,7 @@ public class Point {
 	{
 		if (setx >= 0 && setx <= GridConstants.MAX_PANEL_WIDTH)
 		{
-			//System.out.print("The point is now "+setx);
+			System.out.print("The point is now "+setx);
 
 			this.x = setx;
 		}
